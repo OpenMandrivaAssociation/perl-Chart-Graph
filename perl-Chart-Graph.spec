@@ -1,8 +1,7 @@
 %define module  Chart-Graph
 %define name    perl-%{module}
 %define version 3.2
-%define release %mkrel 4
-%define _requires_exceptions perl(\\(Base_Option\\|Chart::Graph::Xmgrace::Axis_Options\\))
+%define release %mkrel 5
 
 Name:           %{name}
 Version:        %{version}
@@ -12,6 +11,10 @@ License:        GPL or Artistic
 Group:          Development/Perl
 URL:            http://search.cpan.org/dist/%{module}
 Source:         http://www.cpan.org/modules/by-module/Chart/%{module}-%{version}.tar.bz2
+Provides:       perl(Base_Option)
+Provides:       perl(Chart::Graph::Xmgrace::Axis_Options)
+Provides:       perl(Chart::Graph::Xmgrace::Dataset_Options)
+Provides:       perl(Chart::Graph::Xmgrace::Graph_Options)
 %if %{mdkversion} < 1010
 BuildRequires:  perl-devel
 %endif
