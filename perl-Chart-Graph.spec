@@ -19,7 +19,6 @@ Provides:       perl(Chart::Graph::Xmgrace::Graph_Options)
 BuildRequires:  perl-devel
 %endif
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description 
 Graph.pm is a wrapper module that allows easy generation of graphs within perl.
