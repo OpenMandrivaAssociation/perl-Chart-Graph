@@ -1,25 +1,26 @@
-%define module  Chart-Graph
-%define name    perl-%{module}
-%define version 3.2
-%define release %mkrel 8
+%define upstream_name    Chart-Graph
+%define upstream_version 3.2
 
-Name:           %{name}
-Version:        %{version}
-Release:        %{release}
-Summary:        Perl extension for a front-end to gnuplot, XRT, and Xmgrace
-License:        GPL or Artistic
-Group:          Development/Perl
-URL:            http://search.cpan.org/dist/%{module}
-Source:         http://www.cpan.org/modules/by-module/Chart/%{module}-%{version}.tar.bz2
-Provides:       perl(Base_Option)
-Provides:       perl(Chart::Graph::Xmgrace::Axis_Options)
-Provides:       perl(Chart::Graph::Xmgrace::Dataset_Options)
-Provides:       perl(Chart::Graph::Xmgrace::Graph_Options)
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
+Summary:    Perl extension for a front-end to gnuplot, XRT, and Xmgrace
+License:    GPL+ or Artistic
+Group:      Development/Perl
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source0:    http://www.cpan.org/modules/by-module/Chart/%{upstream_name}-%{upstream_version}.tar.bz2
+
 %if %{mdkversion} < 1010
 BuildRequires:  perl-devel
 %endif
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
+
+Provides:   perl(Base_Option)
+Provides:   perl(Chart::Graph::Xmgrace::Axis_Options)
+Provides:   perl(Chart::Graph::Xmgrace::Dataset_Options)
+Provides:   perl(Chart::Graph::Xmgrace::Graph_Options)
 
 %description 
 Graph.pm is a wrapper module that allows easy generation of graphs within perl.
@@ -36,18 +37,18 @@ The parsers also write the test data into the 'Test Result Publication
 Interface' (TRPI) XML schema, developed by SpikeSource.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor <</dev/null
 %make
 
+%check
+%make test
+
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-%check
-%make test
 
 %clean 
 rm -rf %{buildroot}
@@ -57,5 +58,3 @@ rm -rf %{buildroot}
 %doc COPYING ChangeLog README
 %{perl_vendorlib}/Chart
 %{_mandir}/*/*
-
-
