@@ -3,7 +3,7 @@
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	3
+Release:	4
 
 Summary:	Perl extension for a front-end to gnuplot, XRT, and Xmgrace
 License:	GPL+ or Artistic
