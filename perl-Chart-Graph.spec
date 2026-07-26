@@ -1,15 +1,13 @@
 %define upstream_name    Chart-Graph
-%define upstream_version 3.2
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	6
+Version:	3.2
+Release:	7
 
 Summary:	Perl extension for a front-end to gnuplot, XRT, and Xmgrace
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/Chart-Graph
-Source0:	https://cpan.metacpan.org/authors/id/C/CA/CAIDAPERL/Chart-Graph-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/C/CA/CAIDAPERL/Chart-Graph-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -35,7 +33,7 @@ The parsers also write the test data into the 'Test Result Publication
 Interface' (TRPI) XML schema, developed by SpikeSource.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor <</dev/null
@@ -60,9 +58,7 @@ perl Makefile.PL INSTALLDIRS=vendor <</dev/null
 
 * Sat Feb 13 2010 Jérôme Quelin <jquelin@mandriva.org> 3.200.0-1mdv2011.0
 + Revision: 505423
-- rebuild using %%perl_convert_version
-
-* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 3.2-8mdv2010.0
+- rebuild using %3.2 Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 3.2-8mdv2010.0
 + Revision: 430323
 - rebuild
 
